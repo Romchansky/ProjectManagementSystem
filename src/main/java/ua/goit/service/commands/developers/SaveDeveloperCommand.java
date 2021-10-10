@@ -1,12 +1,14 @@
-package ua.goit.service.commands;
+package ua.goit.service.commands.developers;
 
 import lombok.Builder;
 import ua.goit.model.Developer;
+import ua.goit.service.commands.Command;
+import ua.goit.service.commands.CrudCommand;
 import ua.goit.view.View;
 
 import java.util.Map;
 
-public class SaveDeveloperCommand extends CrudCommand{
+public class SaveDeveloperCommand extends CrudCommand {
 
     public SaveDeveloperCommand(View view, Map<String, Command> commands) {
         super(view, commands, Developer.class);
@@ -31,6 +33,6 @@ public class SaveDeveloperCommand extends CrudCommand{
 
     @Override
     public String description() {
-        return "сохранение нового разработчика";
+        return "сохранение нового разработчика: Имя, возраст, пол, зарплата ";
     }
 }

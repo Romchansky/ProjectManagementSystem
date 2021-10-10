@@ -1,11 +1,13 @@
-package ua.goit.service.commands;
+package ua.goit.service.commands.developers;
 
 import ua.goit.model.Developer;
+import ua.goit.service.commands.Command;
+import ua.goit.service.commands.CrudCommand;
 import ua.goit.view.View;
 
 import java.util.Map;
 
-public class DeleteByIdDeveloperCommand extends CrudCommand{
+public class DeleteByIdDeveloperCommand extends CrudCommand {
 
     public DeleteByIdDeveloperCommand(View view, Map<String, Command> commands) {
         super(view, commands, Developer.class);
@@ -23,6 +25,6 @@ public class DeleteByIdDeveloperCommand extends CrudCommand{
 
     @Override
     public String description() {
-        return null;
+        return "удалить разработчика по ID";
     }
 }

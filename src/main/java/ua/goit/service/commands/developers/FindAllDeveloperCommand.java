@@ -1,14 +1,16 @@
-package ua.goit.service.commands;
+package ua.goit.service.commands.developers;
 
 import ua.goit.model.Developer;
+import ua.goit.service.commands.Command;
+import ua.goit.service.commands.CrudCommand;
 import ua.goit.view.View;
 
 import java.util.Map;
 
-public class FindAllDeveloperCommand extends CrudCommand{
+public class FindAllDeveloperCommand extends CrudCommand {
 
 
-    public FindAllDeveloperCommand(View view,Map<String, Command> commands) {
+    public FindAllDeveloperCommand(View view, Map<String, Command> commands) {
         super(view, commands, Developer.class);
     }
 
