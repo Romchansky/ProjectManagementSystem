@@ -1,47 +1,30 @@
 package ua.goit.controller;
 
-import ua.goit.repository.CrudRepository;
-import ua.goit.view.Command;
-import ua.goit.service.commands.FindAll;
-import ua.goit.service.commands.Help;
+
+import lombok.SneakyThrows;
+import ua.goit.service.commands.Command;
 import ua.goit.view.View;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class ConsoleController {
 
     private View view;
-    private List<Command> commands;
+    private final Map<String, Command> commands;
 
-    public ConsoleController(View view, CrudRepository crudRepository) {
+    @SneakyThrows
+    public ConsoleController(View view) {
         this.view = view;
-        this.commands = new ArrayList<>(Arrays.asList(new Help(view),new FindAll(view,crudRepository)));
+        this.commands = Command.of(view);
     }
 
-
-    public void run(){
-        view.write("Hello to the console application");
-        doCommand();
-    }
-
-    private void doCommand() {
-        boolean isNotExit = true;
-        while (isNotExit) {
-            view.write("Введите команду help  для получения списка доступных команд.");
-            String inputCommand = view.read();
-            for (Command command : commands) {
-                if (command.canProcess(inputCommand)) {
-                    command.process();
-                    break;
-                } else if (inputCommand.equalsIgnoreCase("exit")) {
-                    view.write("Сессия окончена. Вы покидаете библиотеку.");
-                    isNotExit = false;
-                    break;
-                }
-            }
+    public void process() {
+        view.write("Добро пожаловать в консольное приложение");
+        while (true) {
+            view.write("Введите команду - help для получения списка доступных команд.");
+            Optional.ofNullable(commands.get(view.read())).ifPresent(Command::process);
         }
-
     }
+
 }

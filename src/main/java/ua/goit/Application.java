@@ -2,27 +2,15 @@ package ua.goit;
 
 
 import ua.goit.controller.ConsoleController;
-import ua.goit.model.Developer;
-import ua.goit.model.Skills;
-import ua.goit.repository.CrudRepository;
-import ua.goit.repository.QueryRepository;
-import ua.goit.repository.QueryRepositoryImpl;
-import ua.goit.repository.RepositoryFactory;
-import ua.goit.view.Console;
-import ua.goit.view.View;
 
-import java.util.List;
-import java.util.stream.Collectors;
+import ua.goit.view.Console;
 
 public class Application {
 
     public static void main(String[] args) {
 
-        CrudRepository<Developer, Long> repository = RepositoryFactory.of(Developer.class);
-        View view = new Console();
-
-        ConsoleController controller = new ConsoleController(view, repository);
-        controller.run();
+        ConsoleController controller = new ConsoleController(new Console());
+        controller.process();
 
 
         /*

@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
-import ua.goit.controller.DataBaseConnection;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,6 +21,10 @@ import java.util.stream.StreamSupport;
 public class ScriptExecutor {
 
     private final static String PACKAGE_NAME = "scripts";
+
+    public static void main(String[] args) {
+        start();
+    }
 
     @SneakyThrows
     public static void start() {

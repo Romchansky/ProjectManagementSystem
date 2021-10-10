@@ -1,8 +1,8 @@
 package ua.goit.view;
 
-import lombok.AllArgsConstructor;
 
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 
 public class Console implements View {
@@ -15,11 +15,11 @@ public class Console implements View {
 
     @Override
     public String read() {
-        return scanner.nextLine();
+        return scanner.nextLine().trim().toLowerCase();
     }
 
     @Override
-    public void write(String message) {
-        System.out.println(message);
+    public void write(Object ... objects) {
+        Stream.of(objects).forEach(System.out::println);
     }
 }

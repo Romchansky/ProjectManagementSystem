@@ -2,11 +2,8 @@ package ua.goit.repository;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import ua.goit.controller.DataBaseConnection;
+import ua.goit.utils.DataBaseConnection;
 import ua.goit.model.BaseEntity;
 import ua.goit.utils.PropertiesLoader;
 
