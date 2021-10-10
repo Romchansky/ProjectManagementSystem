@@ -21,7 +21,7 @@ public class SaveDeveloperCommand extends CrudCommand{
                 .salary(Long.valueOf(view.read()))
                 .build();
 
-        super.save((Builder) developer);
+        super.save(developer);
     }
 
     @Override

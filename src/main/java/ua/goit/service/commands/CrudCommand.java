@@ -1,9 +1,7 @@
 package ua.goit.service.commands;
 
 import lombok.Builder;
-import lombok.SneakyThrows;
 import ua.goit.model.BaseEntity;
-import ua.goit.model.Developer;
 import ua.goit.repository.CrudRepository;
 import ua.goit.repository.RepositoryFactory;
 import ua.goit.view.View;
@@ -44,9 +42,9 @@ public abstract class CrudCommand<E extends BaseEntity<ID>, ID> implements Comma
     }
 
 
-    protected void save(Builder builder) {
+    protected void save(Object obj) {
         view.write("Введите модель которую хотите сохранить");
-        crudRepository.save((E) builder);
+        crudRepository.save((E)obj);
     }
 
 
