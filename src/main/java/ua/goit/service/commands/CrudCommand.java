@@ -42,9 +42,9 @@ public abstract class CrudCommand<E extends BaseEntity<ID>, ID> implements Comma
     }
 
 
-    protected void save(Object obj) {
-        view.write("Введите модель которую хотите сохранить");
-        crudRepository.save((E)obj);
+    protected void save(E entity) {
+        view.write("Вы сохранили - " + entity);
+        crudRepository.save(entity);
     }
 
 
