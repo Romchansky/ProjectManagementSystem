@@ -1,4 +1,4 @@
-USE initDB;
+USE initDataBase;
 
 INSERT INTO developers VALUES
                            (1, 'John Doe', 25, 'male',3200),
@@ -33,10 +33,10 @@ INSERT INTO skills VALUES
 INSERT INTO projects VALUES
                          (1, 'Assassins Creed', 'Gaming', 50000000, '2020-05-21'),
                          (2, 'Mobile Bank', 'Bank', 3700000, '2021-06-22'),
-                         (3, 'Weather Prognose', 'Radio', 2000000, '2020-10-10'),
+                         (3, 'Weather Prognoses', 'Radio', 2000000, '2020-10-10'),
                          (4, 'Robotics', 'Machine Learning',500000000 , '2018-03-21'),
                          (5, 'Grand Theft Auto V', 'Gaming', 265000000, '2013-09-17'),
-                         (6, 'Desing', 'Gaming', 10000000, '2019-05-18'),
+                         (6, 'Design', 'Gaming', 10000000, '2019-05-18'),
                          (7, 'Android ', 'Mobile operating system',300000000, '2021-08-27');
 
 

@@ -15,7 +15,7 @@ public class FindByIdCompanyCommand extends CrudCommand {
 
     @Override
     public void process() {
-        super.deleteById();
+        super.findById();
     }
 
     @Override

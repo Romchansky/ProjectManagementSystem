@@ -14,7 +14,6 @@ import java.io.Serializable;
 @Entity(name = "developers")
 public class Developer implements BaseEntity<Long>, Serializable {
 
-
     private static final long serialVersionUID = -5808937699282505273L;
 
     @Id
@@ -32,8 +31,6 @@ public class Developer implements BaseEntity<Long>, Serializable {
 
     @Column(name = "salary")
     private Long salary;
-
-
 
 }
 

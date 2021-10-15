@@ -39,7 +39,7 @@ public abstract class CrudCommand<E extends BaseEntity<ID>, ID> implements Comma
     protected void deleteById() {
         view.write("Введите ID по которому хотите удалить");
         crudRepository.deleteById((ID) view.read());
-        view.write("Объект с ID: " + view.read() + " удален");
+        view.write("Объект удален");
     }
 
     protected void save(E entity) {

@@ -4,10 +4,11 @@ import ua.goit.model.BaseEntity;
 import ua.goit.model.Developer;
 
 import java.util.List;
+import java.util.Map;
 
 public interface QueryRepository<T extends BaseEntity<ID>, ID> {
 
-    Long getSalaryDevsByProject(Long id);
+    List getSalaryDevsByProject(Long id);
 
     List<T> listDevelopersByProject(Long id);
 
