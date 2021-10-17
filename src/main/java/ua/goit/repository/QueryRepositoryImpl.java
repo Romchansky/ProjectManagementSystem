@@ -3,7 +3,6 @@ package ua.goit.repository;
 
 import lombok.SneakyThrows;
 import ua.goit.model.Developer;
-import ua.goit.model.Project;
 import ua.goit.model.dto.ProjectDto;
 import ua.goit.utils.DataBaseConnection;
 
@@ -11,18 +10,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 public class QueryRepositoryImpl implements QueryRepository {
 
-    private final List<Developer> developers;
+
     private final Connection connection;
     private Statement statement;
 
     @SneakyThrows
     public QueryRepositoryImpl() {
-        this.developers = new ArrayList<>();
         this.connection = DataBaseConnection.getInstance().getConnection();
         this.statement = connection.createStatement();
     }
@@ -43,7 +40,7 @@ public class QueryRepositoryImpl implements QueryRepository {
     public List<Developer> listDevelopersByProject(Long id) {
         String queryDevelopersProject = "SELECT * FROM initDataBase.developers d, initDataBase.projects p, initDataBase.developers_projects dp" +
                 " WHERE  d.id=dp.id_developer AND p.id = dp.id_project AND p.id ='" + id + "'";
-        return getDevelopersResult(queryDevelopersProject, developers);
+        return getDevelopersResult(queryDevelopersProject);
     }
 
     @Override
@@ -52,7 +49,7 @@ public class QueryRepositoryImpl implements QueryRepository {
                 " INNER JOIN initDataBase.developers_skills ds ON d.id = ds.id_developer " +
                 " INNER JOIN initDataBase.skills s ON ds.id_skill = s.id" +
                 " WHERE s.language ='" + language + "'";
-        return getDevelopersResult(queryDeveloperSkill, developers);
+        return getDevelopersResult(queryDeveloperSkill);
     }
 
     @Override
@@ -61,7 +58,7 @@ public class QueryRepositoryImpl implements QueryRepository {
                 "INNER JOIN initDataBase.developers_skills ds ON d.id = ds.id_developer " +
                 "INNER JOIN initDataBase.skills s ON ds.id_skill = s.id" +
                 " WHERE s.level ='" + levelDev + "'";
-        return getDevelopersResult(queryDeveloperLevel, developers);
+        return getDevelopersResult(queryDeveloperLevel);
     }
 
     @SneakyThrows
@@ -85,7 +82,8 @@ public class QueryRepositoryImpl implements QueryRepository {
     }
 
     @SneakyThrows
-    private List<Developer> getDevelopersResult(String query, List... list) {
+    private List<Developer> getDevelopersResult(String query) {
+        List<Developer> developers = new ArrayList<>();
         ResultSet resultSet = statement.executeQuery(query);
         while (resultSet.next()) {
             Developer developer = Developer.builder()
